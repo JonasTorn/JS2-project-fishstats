@@ -1,35 +1,58 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Component, useState } from "react";
+import "./App.css";
+import {
+	BrowserRouter,
+	Routes,
+	Route,
+	Link,
+	NavLink,
+	Outlet,
+} from "react-router-dom";
 
 function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+	return (
+		<>
+			<BrowserRouter>
+				<Routes>
+					<Route path="/" element={<Layout />}>
+						<Route index element={<HomePage />}></Route>
+						<Route path="fishing" element={<FishingPage />}></Route>
+						<Route path="stats" element={<StatsPage />}></Route>
+						<Route path="accommodation" element={<AccommodationPage />}></Route>
+						<Route path="pictures" element={<PicturesPage />}></Route>
+					</Route>
+				</Routes>
+			</BrowserRouter>
+		</>
+	);
 }
+function Layout() {
+	return (
+		<>
+			<NavLink to="/">Start</NavLink>
+			<NavLink to="/fishing">Fiske</NavLink>
+			<NavLink to="/stats">Statistik</NavLink>
+			<NavLink to="/accommodation">Boende</NavLink>
+			<NavLink to="/pictures">Bilder</NavLink>
+			<Outlet />
+			<footer>Detta är en footer</footer>
+		</>
+	);
+}
+const HomePage = () => {
+	return <h1>STARTSIDAN</h1>;
+};
+const FishingPage = () => {
+	return <h1>FISKE</h1>;
+};
+const StatsPage = () => {
+	return <h1>Statistik</h1>;
+};
+const AccommodationPage = () => {
+	return <h1>BOENDE OCH SERVICE</h1>;
+};
+const PicturesPage = () => {
+	return <h1>BILDER</h1>;
+};
 
-export default App
+export default App;
