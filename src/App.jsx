@@ -8,10 +8,11 @@ import {
 	NavLink,
 	Outlet,
 } from "react-router-dom";
+import { Button } from "./components/ui/button";
 
 function App() {
 	return (
-		<>
+		<div className="dark bg-background text-primary w-full h-screen">
 			<BrowserRouter>
 				<Routes>
 					<Route path="/" element={<Layout />}>
@@ -23,7 +24,7 @@ function App() {
 					</Route>
 				</Routes>
 			</BrowserRouter>
-		</>
+		</div>
 	);
 }
 function Layout() {
@@ -35,15 +36,25 @@ function Layout() {
 			<NavLink to="/accommodation">Boende</NavLink>
 			<NavLink to="/pictures">Bilder</NavLink>
 			<Outlet />
-			<footer>Detta är en footer</footer>
+			<footer className="bg-black">Detta är en footer</footer>
 		</>
 	);
 }
 const HomePage = () => {
-	return <h1>STARTSIDAN</h1>;
+	return (
+
+			<h1 className="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0">
+				STARTSIDAN
+			</h1>
+	);
 };
 const FishingPage = () => {
-	return <h1>FISKE</h1>;
+	return (
+		<>
+			<h1>FISKE</h1>
+			<Button variant="secondary">Test</Button>
+		</>
+	);
 };
 const StatsPage = () => {
 	return <h1>Statistik</h1>;
