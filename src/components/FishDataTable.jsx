@@ -49,14 +49,18 @@ const FishDataTable = () => {
 	}
 
 	return (
+        // Använda <Card/> här istället? 
 		<div className="w-full">
-			<div className="flex items-center py-4">
+            {/* <CardTitle>? */}
+			<div className="flex items-center py-4"> 
 				<YearSelector year={year} yearSpan={yearSpan} setYear={setYear} />
 				<ColumnVisibilityMenu table={table} />
 			</div>
+            {/* <CardContent>? */}
 			<div className="rounded-md border">
 				<TableContent table={table} columns={columns} />
 			</div>
+            {/* <CardFooter>? */}
 			<PaginationControls
 				table={table}
 				pagination={pagination}
