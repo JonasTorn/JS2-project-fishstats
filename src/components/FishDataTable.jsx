@@ -1,17 +1,7 @@
 import React, { useMemo, useState, useEffect } from "react";
-import {
-	flexRender,
-	getCoreRowModel,
-	getFilteredRowModel,
-	getPaginationRowModel,
-	getSortedRowModel,
-	useReactTable,
-} from "@tanstack/react-table";
-import { ArrowUpDown, ChevronDown, MoreHorizontal } from "lucide-react";
 
-import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
-
-import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
+import { EXCLUDED_KEYS, PAGE_SIZE, API_BASE_URL } from "@/data/constants";
+import { useTableState } from "@/components/FishRegister/useTableState";
 import useFishData from "@/services/useFishData";
 import Columns from "./FishRegister/Columns";
 import ErrorCard from "./FishRegister/ErrorCard";
@@ -24,44 +14,31 @@ import TableContent from "./FishRegister/TableContent";
 const FishDataTable = () => {
 	const currentYear = new Date().getFullYear();
 	const [year, setYear] = useState(currentYear);
-	const apiUrl = "https://xn--dammn-pra.se/wp-json/fishregister/v1/list/";
-	const { data, isLoading, error } = useFishData(year, apiUrl);
 
-	const [pagination, setPagination] = useState({
-		pageIndex: 0,
-		pageSize: 25, // Increased from default 10
-	});
-	const yearSpan = Array.from(
-		{ length: currentYear - 2002 + 1 },
-		(_, index) => currentYear - index
+	const { data, isLoading, error } = useFishData(year, API_BASE_URL);
+	const yearSpan = useMemo(
+		() =>
+			Array.from(
+				{ length: currentYear - 2002 + 1 },
+				(_, index) => currentYear - index
+			),
+		[currentYear]
 	);
 
-	const columns = useMemo(() => Columns({ data }), [data]);
-	const [sorting, setSorting] = useState([]);
-	const [columnFilters, setColumnFilters] = useState([]);
-	const [columnVisibility, setColumnVisibility] = useState({});
-	const [rowSelection, setRowSelection] = useState({});
+	const columns = useMemo(
+		() =>
+			Columns({
+				data,
+				excludedKeys: EXCLUDED_KEYS,
+			}),
+		[data]
+	);
 
-	const table = useReactTable({
+	const { table, pagination, setPagination } = useTableState(
 		data,
 		columns,
-		onSortingChange: setSorting,
-		onColumnFiltersChange: setColumnFilters,
-		getCoreRowModel: getCoreRowModel(),
-		getPaginationRowModel: getPaginationRowModel(),
-		getSortedRowModel: getSortedRowModel(),
-		getFilteredRowModel: getFilteredRowModel(),
-		onColumnVisibilityChange: setColumnVisibility,
-		onRowSelectionChange: setRowSelection,
-		onPaginationChange: setPagination,
-		state: {
-			sorting,
-			columnFilters,
-			columnVisibility,
-			rowSelection,
-			pagination,
-		},
-	});
+		PAGE_SIZE
+	);
 
 	if (isLoading) {
 		return <LoadingCard />;
