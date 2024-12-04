@@ -6,7 +6,7 @@ function useFishData(year, apiUrl) {
 	const [error, setError] = useState(null);
 
 	useEffect(() => {
-		const fetchFishDataByYear = async (selectedYear) => {
+		const getFishDataByYear = async (selectedYear) => {
 			try {
 				setIsLoading(true);
 				setError(null);
@@ -27,7 +27,7 @@ function useFishData(year, apiUrl) {
 			}
 		};
 
-		fetchFishDataByYear(year);
+		getFishDataByYear(year);
 	}, [year, apiUrl]);
 
 	return { data, isLoading, error };
