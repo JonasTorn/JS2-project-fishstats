@@ -2,7 +2,7 @@
 export const EXCLUDED_KEYS = ["id", "created_at", "updated_at", "deleted_at"];
 
 // Vilka "keys" som ska kunna sorteras
-export const SORTABLE_COLUMNS = [
+export const SORTABLE_KEYS = [
 	"measurementday",
 	"length",
 	"weight",	
