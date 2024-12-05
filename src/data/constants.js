@@ -1,6 +1,16 @@
 // Vilka "keys" i datan som INTE ska kunna visas som kolumner i tabellen
 export const EXCLUDED_KEYS = ["id", "created_at", "updated_at", "deleted_at"];
 
+// Vilka "keys" som ska kunna sorteras
+export const SORTABLE_COLUMNS = [
+	"measurementday",
+	"length",
+	"weight",	
+	"airtemp",
+	"watertemp",
+	"waterlevel",
+];
+
 // Vilka "keys" som ska visas som STANDARD som kolumner i tabellen
 export const DEFAULT_VISIBLE_KEYS = [
 	"measurementday",
