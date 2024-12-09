@@ -42,6 +42,18 @@ body {
   }
 } */
 
+/* a {
+    @apply underline text-blue-600 hover:text-blue-800 visited:text-purple-600
+ } */
+
+ .active {
+     background-color: theme(colors.blue.100);
+     text-decoration: underline 1px;
+    }
+.active-navbar {
+       background-color: transparent;
+    }
+
 @layer base {
 	:root {
 		--background: 0 0% 100%;
