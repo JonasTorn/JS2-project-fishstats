@@ -6,9 +6,10 @@ import FishDataTable from "@/components/FishDataTable";
 const StatsPage = () => {
 	
 	return (
-		<div className="w-full max-w-4xl mx-auto mt-8">
+		<Card className="w-full max-w-4xl mx-auto mt-8">
 			<FishDataTable></FishDataTable>			
-		</div>
+		</Card>
+        
 	);
 };
 

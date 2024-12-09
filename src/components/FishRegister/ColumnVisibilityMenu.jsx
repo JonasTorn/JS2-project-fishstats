@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 const ColumnVisibilityMenu = ({ table }) => {
+    console.log('Current visibility state:', table.getState().columnVisibility);
 	return (
 		<DropdownMenu>
 			<DropdownMenuTrigger asChild>
@@ -30,6 +31,8 @@ const ColumnVisibilityMenu = ({ table }) => {
 								checked={column.getIsVisible()}
 								onCheckedChange={(value) => column.toggleVisibility(!!value)}
 							>
+                               
+                                
 								{column.id}
 							</DropdownMenuCheckboxItem>
 						);

@@ -1,21 +1,35 @@
 import React, { useMemo, useState, useEffect } from "react";
 
-import { EXCLUDED_KEYS, PAGE_SIZE, API_BASE_URL } from "@/data/constants";
+import { API_BASE_URL } from "@/data/constants";
 import { useTableState } from "@/components/FishRegister/useTableState";
 import useFishData from "@/services/useFishData";
-import Columns from "./FishRegister/Columns";
+import { columns } from "./FishRegister/columns";
 import ErrorCard from "./FishRegister/ErrorCard";
 import LoadingCard from "./FishRegister/LoadingCard";
 import YearSelector from "./FishRegister/YearSelector";
 import ColumnVisibilityMenu from "./FishRegister/ColumnVisibilityMenu";
 import PaginationControls from "./FishRegister/PaginationControls";
 import TableContent from "./FishRegister/TableContent";
+import {
+	Card,
+	CardContent,
+	CardDescription,
+	CardFooter,
+	CardHeader,
+	CardTitle,
+} from "@/components/ui/card";
+import { useLanguageStore } from "@/lib/languageStore";
 
 const FishDataTable = () => {
+	const language = useLanguageStore((state) => state.language);
 	const currentYear = new Date().getFullYear();
 	const [year, setYear] = useState(currentYear);
-
 	const { data, isLoading, error } = useFishData(year, API_BASE_URL);
+
+	const tableColumns = useMemo(
+		() => (data ? columns(data, language) : []),
+		[data, language]
+	);
 	const yearSpan = useMemo(
 		() =>
 			Array.from(
@@ -25,21 +39,10 @@ const FishDataTable = () => {
 		[currentYear]
 	);
 
-	const columns = useMemo(
-		() =>
-			Columns({
-				data,
-				excludedKeys: EXCLUDED_KEYS,
-			}),
-		[data]
-	);
-
 	const { table, pagination, setPagination } = useTableState(
 		data,
-		columns,
-		PAGE_SIZE
+		tableColumns
 	);
-
 	if (isLoading) {
 		return <LoadingCard />;
 	}
@@ -49,24 +52,22 @@ const FishDataTable = () => {
 	}
 
 	return (
-        // Använda <Card/> här istället? 
-		<div className="w-full">
-            {/* <CardTitle>? */}
-			<div className="flex items-center py-4"> 
+		<Card className="w-full px-[2vw] md:px-8">
+			<CardTitle className="flex items-center py-8">
 				<YearSelector year={year} yearSpan={yearSpan} setYear={setYear} />
 				<ColumnVisibilityMenu table={table} />
-			</div>
-            {/* <CardContent>? */}
-			<div className="rounded-md border">
-				<TableContent table={table} columns={columns} />
-			</div>
-            {/* <CardFooter>? */}
-			<PaginationControls
-				table={table}
-				pagination={pagination}
-				setPagination={setPagination}
-			/>
-		</div>
+			</CardTitle>
+			<CardContent className="rounded-md border">
+				<TableContent table={table} columns={tableColumns} />
+			</CardContent>
+			<CardFooter>
+				<PaginationControls
+					table={table}
+					pagination={pagination}
+					setPagination={setPagination}
+				/>
+			</CardFooter>
+		</Card>
 	);
 };
 

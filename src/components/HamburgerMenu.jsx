@@ -11,15 +11,15 @@ import {
 import { Button } from "./ui/button";
 import { Separator } from "@radix-ui/react-separator";
 import { NavLink } from "react-router-dom";
+import { ChevronDown } from "lucide-react";
 
 const HamburgerMenu = () => {
-	return (
-		<>
+	return (		
 			<Sheet>
-				<SheetTrigger asChild>
-					<Button variant="outline">MENY</Button>
+				<SheetTrigger asChild >
+					<Button variant="outline" className="bg-secondary text-background hover:bg-primary-foreground">MENY <ChevronDown /></Button>
 				</SheetTrigger>
-				<SheetContent className="px-1 flex flex-col gap-0.5 items-stretch place-self-center ">
+				<SheetContent className="px-1 flex flex-col gap-0.5 items-stretch place-self-center min-w-fit max-w-[60vw]">
 					<SheetHeader className="px-8 py-4 place-self-center">
 						<SheetTitle>
 							<h4>Meny</h4>
@@ -29,8 +29,8 @@ const HamburgerMenu = () => {
                     <Separator className="h-[1px] bg-muted" />
 
 					<SheetClose asChild>
-						<NavLink to="/" className="hover:text-muted-foreground">
-							<div className="size-full px-8 py-4 hover:bg-secondary hover:text-background">
+						<NavLink to="/">
+							<div className="w-full h-fit px-8 py-4 hover:bg-secondary hover:text-background aria-[current=page]:bg-blue-100">
 								START
 							</div>
 						</NavLink>
@@ -39,18 +39,18 @@ const HamburgerMenu = () => {
 					<Separator className="h-[1px] bg-muted" />
 
 					<SheetClose asChild>
-                        <NavLink to="/fiske" className="hover:text-muted-foreground ">
-                            <div className="size-full px-8 py-4 hover:bg-secondary hover:text-background">
+                        <NavLink to="/fiske">
+                            <div className="w-full h-fit px-8 py-4 hover:bg-secondary hover:text-background">
                                 FISKE
                             </div>
-                        </NavLink>
+                        </NavLink>  
                     </SheetClose>
 
 					<Separator className="h-[1px] bg-muted" />
 
 					<SheetClose asChild>
-                        <NavLink to="/statistik" className="hover:text-muted-foreground ">
-                            <div className="size-full px-8 py-4 hover:bg-secondary hover:text-background">
+                        <NavLink to="/statistik">
+                            <div className="w-full h-fit px-8 py-4 hover:bg-secondary hover:text-background">
                                 STATISTIK
                             </div>
                         </NavLink>
@@ -59,8 +59,8 @@ const HamburgerMenu = () => {
 					<Separator className="h-[1px] bg-muted" />
 
 					<SheetClose asChild>
-                        <NavLink to="/boende" className="hover:text-muted-foreground ">
-                            <div className="size-full px-8 py-4 hover:bg-secondary hover:text-background">
+                        <NavLink to="/boende">
+                            <div className="w-full h-fit px-8 py-4 hover:bg-secondary hover:text-background">
                                 BOENDE
                             </div>
                         </NavLink>
@@ -69,8 +69,8 @@ const HamburgerMenu = () => {
 					<Separator className="h-[1px] bg-muted" />
 
 					<SheetClose asChild>
-                        <NavLink to="/bilder" className="hover:text-muted-foreground ">
-                            <div className="size-full px-8 py-4 hover:bg-secondary hover:text-background">
+                        <NavLink to="/bilder">
+                            <div className="w-full h-fit px-8 py-4 hover:bg-secondary hover:text-background">
                                 BILDER
                             </div>
                         </NavLink>
@@ -85,7 +85,6 @@ const HamburgerMenu = () => {
 					</SheetFooter>
 				</SheetContent>
 			</Sheet>
-		</>
 	);
 };
 
