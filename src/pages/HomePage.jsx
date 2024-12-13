@@ -2,9 +2,7 @@ import React from "react";
 import { Button } from "../components/ui/button";
 import { Link, NavLink } from "react-router-dom";
 import PageHeader from "@/components/PageHeader";
-import { STYLES } from "@/data/constants";
-
-
+import { STYLES } from "@/data/styles";
 
 const HomePage = () => {
 	return (

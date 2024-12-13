@@ -47,12 +47,8 @@ const Footer = () => {
 						</ul>
 					</div>
 					<hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
-					<span className="block text-sm text-gray-500 sm:text-center dark:text-gray-400">
-						© 2024{" "}
-						<a href="" className="hover:underline">
-							TORN-media™
-						</a>
-						. All Rights Reserved.
+					<span className="block text-sm text-gray-400 sm:text-center">
+                    073-063 47 72  |  info@campdamman.se
 					</span>
 				</div>
 			</footer>

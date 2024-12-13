@@ -5,11 +5,11 @@ import { flexRender } from "@tanstack/react-table";
 const TableContent = ({ table, columns }) => {
 	return (
 		<Table>
-			<TableHeader>
+			<TableHeader >
 				{table.getHeaderGroups().map((headerGroup) => (
-					<TableRow key={headerGroup.id}>
+					<TableRow key={headerGroup.id} >
 						{headerGroup.headers.map((header) => (
-							<TableHead key={header.id}>
+							<TableHead key={header.id} >
 								{header.isPlaceholder
 									? null
 									: flexRender(

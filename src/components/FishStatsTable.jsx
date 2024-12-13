@@ -20,10 +20,15 @@ import {
 } from "@/components/ui/card";
 import { useLanguageStore } from "@/lib/languageStore";
 
-const FishDataTable = () => {
+
+const FishStatsTable = () => {
 	const language = useLanguageStore((state) => state.language);
+       
+   
+
 	const currentYear = new Date().getFullYear();
 	const [year, setYear] = useState(currentYear);
+    
 	const { data, isLoading, error } = useFishData(year, API_BASE_URL);
 
 	const tableColumns = useMemo(
@@ -52,12 +57,12 @@ const FishDataTable = () => {
 	}
 
 	return (
-		<Card className="w-full px-[2vw] md:px-8">
+		<Card className=" mx-[4vw] md:px-8 border-none shadow-none">
 			<CardTitle className="flex items-center py-8">
 				<YearSelector year={year} yearSpan={yearSpan} setYear={setYear} />
 				<ColumnVisibilityMenu table={table} />
 			</CardTitle>
-			<CardContent className="rounded-md border">
+			<CardContent className="rounded-md border px-0">
 				<TableContent table={table} columns={tableColumns} />
 			</CardContent>
 			<CardFooter>
@@ -71,4 +76,4 @@ const FishDataTable = () => {
 	);
 };
 
-export default FishDataTable;
+export default FishStatsTable;
