@@ -1,15 +1,15 @@
 import React, { useMemo, useState, useEffect } from "react";
 
 import { API_BASE_URL } from "@/data/constants";
-import { useTableState } from "@/components/FishRegister/useTableState";
+import { useTableState } from "@/components/FishList/useTableState";
 import useFishData from "@/services/useFishData";
-import { columns } from "./FishRegister/columns";
-import ErrorCard from "./FishRegister/ErrorCard";
-import LoadingCard from "./FishRegister/LoadingCard";
-import YearSelector from "./FishRegister/YearSelector";
-import ColumnVisibilityMenu from "./FishRegister/ColumnVisibilityMenu";
-import PaginationControls from "./FishRegister/PaginationControls";
-import TableContent from "./FishRegister/TableContent";
+import { columns } from "./FishList/columns";
+import ErrorCard from "./FishList/ErrorCard";
+import LoadingCard from "./FishList/LoadingCard";
+import YearSelector from "./FishList/YearSelector";
+import ColumnVisibilityMenu from "./FishList/ColumnVisibilityMenu";
+import PaginationControls from "./FishList/PaginationControls";
+import TableContent from "./FishList/TableContent";
 import {
 	Card,
 	CardContent,
