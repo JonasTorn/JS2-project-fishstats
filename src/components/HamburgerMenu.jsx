@@ -49,9 +49,9 @@ const HamburgerMenu = () => {
 					<Separator className="h-[1px] bg-muted" />
 
 					<SheetClose asChild>
-                        <NavLink to="/statistik">
+                        <NavLink to="/fisktrappa">
                             <div className="w-full h-fit px-8 py-4 hover:bg-secondary hover:text-background">
-                                STATISTIK
+                                FISKTRAPPA
                             </div>
                         </NavLink>
                     </SheetClose>
