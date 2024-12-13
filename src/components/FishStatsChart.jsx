@@ -11,6 +11,8 @@ import {
 } from "@/components/ui/card";
 import {
 	ChartContainer,
+	ChartLegend,
+	ChartLegendContent,
 	ChartTooltip,
 	ChartTooltipContent,
 } from "@/components/ui/chart";
@@ -40,12 +42,12 @@ function FishStatsChart() {
 	}, []);
 	const chartConfig = {
 		amount: {
-			label: language === "sv" ? "Mängd" : "Fish Count",
+			label: language === "sv" ? "Antal" : "Fish Count",
 			color: "hsl(var(--primary))",			
 		},
 		year: {
 			label: language === "sv" ? "Årtal" : "Year",
-			color: "hsl(var(--destructive))",			
+			color: "hsl(var(--destructive))",
 		},
 	};
 	if (isLoading) {
@@ -73,7 +75,7 @@ function FishStatsChart() {
 			<CardHeader>
 				<CardTitle>
 					{language === "sv"
-						? "Mängd fiskar per år"
+						? "Antal fiskar per år"
 						: "Fish Statistics Over Time"}
 				</CardTitle>
 				<CardDescription></CardDescription>
@@ -98,11 +100,9 @@ function FishStatsChart() {
 						<YAxis dataKey="amount" tickLine={true} axisLine={true} tickMargin={10} />
 						<ChartTooltip
 							cursor={true}
-							content={<ChartTooltipContent indicator="dot" dataKey="amount" />
+							content={<ChartTooltipContent indicator="dot" hideLabel/>
                            }
-						/>
-                     
-
+						/>                        
 						<Area
 							dataKey="amount"
 							type="natural"
