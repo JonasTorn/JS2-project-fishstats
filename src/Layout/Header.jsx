@@ -11,8 +11,8 @@ const Header = () => {
 			<div className="max-w-5xl w-full  p-8 mx-auto flex items-center justify-between gap-4 ">
 				<Link to="/" className="bg-background w-32 h-32 p-3 rounded-full">
 					<img
-						src="src/assets/images/dammans-logo-480x510.png"
-						alt="Flowbite Logo"
+						src="https://xn--dammn-pra.se/wp-content/uploads/2022/06/dammans-logo-480x510.png"
+						alt="Dammån FVO logo"
 						className=" m-auto p-0.5"
 					/>
 				</Link>

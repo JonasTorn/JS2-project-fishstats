@@ -14,8 +14,8 @@ const Footer = () => {
 						>
 							<span className="bg-background w-14 h-14 p-1.5 rounded-full">
 								<img
-									src="src/assets/images/dammans-logo-480x510.png"
-									alt="Flowbite Logo"
+									src="https://xn--dammn-pra.se/wp-content/uploads/2022/06/dammans-logo-480x510.png"
+									alt="Dammån FVO Logo"
 									className="w-auto"
 								/>
 							</span>
