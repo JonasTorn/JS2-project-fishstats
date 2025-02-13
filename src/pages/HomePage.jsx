@@ -51,7 +51,7 @@ const HomePage = () => {
 							</p>
 						</div>
 						<img
-							src="src/assets/images/jamtland-marked.svg"
+							src="https://xn--dammn-pra.se/wp-content/uploads/2022/06/jamtland-marked.svg"
 							className="w-60 place-self-center"
 						/>
 					</article>
@@ -59,7 +59,7 @@ const HomePage = () => {
 					<div className="even:bg-blue-100">
 						<article className={STYLES.article}>
 							<img
-								src="src/assets/images/square-camping.jpg"
+								src="https://xn--dammn-pra.se/wp-content/uploads/2022/06/square-camping-980x980.jpg"
 								className="w-60 place-self-center"
 							/>
 							<div>
@@ -154,7 +154,7 @@ const HomePage = () => {
 								</p>
 							</div>
 							<img
-								src="src/assets/images/square-oring.jpg"
+								src="https://xn--dammn-pra.se/wp-content/uploads/2022/06/square-oring-980x980.jpg"
 								className="w-60 place-self-center"
 							/>
 						</article>
