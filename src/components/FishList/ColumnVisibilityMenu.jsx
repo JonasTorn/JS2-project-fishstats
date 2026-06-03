@@ -17,7 +17,7 @@ const ColumnVisibilityMenu = ({ table }) => {
 					Kolumner <ChevronDown />
 				</Button>
 			</DropdownMenuTrigger>
-			<DropdownMenuContent align="end">
+			<DropdownMenuContent align="end" className="bg-background">
 				{table
 					.getAllColumns()
 					.filter((column) => column.getCanHide())

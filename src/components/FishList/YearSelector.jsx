@@ -15,7 +15,7 @@ const YearSelector = ({ year, setYear, yearSpan }) => {
 			<SelectTrigger className="w-36">
 				<SelectValue placeholder="Välj år" />
 			</SelectTrigger>
-			<SelectContent className="max-h-[300px] overflow-y-auto">
+			<SelectContent className="max-h-[300px] overflow-y-auto bg-background">
 				<SelectGroup>
 					<SelectLabel>Årtal</SelectLabel>
 					{yearSpan.map((yearOption) => (
