@@ -1,4 +1,3 @@
-import React from "react";
 import FishStatsTable from "@/components/FishStatsTable";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import FishStatsChart from "@/components/FishStatsChart";
