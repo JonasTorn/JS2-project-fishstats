@@ -1,11 +1,19 @@
 import React from "react";
-import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "../ui/select";
+import {
+	Select,
+	SelectContent,
+	SelectGroup,
+	SelectItem,
+	SelectLabel,
+	SelectTrigger,
+	SelectValue,
+} from "../ui/select";
 
-const YearSelector = ({year, setYear, yearSpan}) => {
+const YearSelector = ({ year, setYear, yearSpan }) => {
 	return (
 		<Select value={year} onValueChange={(value) => setYear(value)}>
 			<SelectTrigger className="w-36">
-				<SelectValue placeholder="Välj år:" />
+				<SelectValue placeholder="Välj år" />
 			</SelectTrigger>
 			<SelectContent className="max-h-[300px] overflow-y-auto">
 				<SelectGroup>
