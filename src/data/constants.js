@@ -51,5 +51,21 @@ export const COLUMN_TITLES = {
 	weight: "Vikt",
 };
 
+export const CELL_TRANSLATIONS = {
+	sex: {
+		Male: "Hane",
+		Female: "Hona",
+	},
+	timeofday: {
+		Afternoon: "Eftermiddag",
+		Morning: "Morgon",
+	},
+	weather: {
+		Sunny: "Soligt",
+		Cloudy: "Mulet",
+		Rain: "Regn",
+	},
+};
+
 export const API_BASE_URL =
 	"https://xn--dammn-pra.se/wp-json/fishregister/v1/list/";

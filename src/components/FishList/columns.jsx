@@ -1,7 +1,7 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowUpDown } from "lucide-react";
-import { COLUMN_ORDER, COLUMN_TITLES, isSortableColumn, isExcludedColumn } from "@/data/constants";
+import { COLUMN_ORDER, COLUMN_TITLES, CELL_TRANSLATIONS, isSortableColumn, isExcludedColumn } from "@/data/constants";
 
 const formatHeaderText = (key) =>
 	COLUMN_TITLES[key] || key.charAt(0).toUpperCase() + key.slice(1).replace(/_/g, " ");
@@ -28,7 +28,10 @@ export const columns = (data) => {
 		id: key,
 		accessorKey: key,
 		header: isSortableColumn(key) ? createSortableHeader(key) : formatHeaderText(key),
-		cell: ({ row }) => row.getValue(key),
+		cell: ({ row }) => {
+			const value = row.getValue(key);
+			return CELL_TRANSLATIONS[key]?.[value] ?? value;
+		},
 		enableSorting: isSortableColumn(key),
 		enableHiding: true,
 	}));
