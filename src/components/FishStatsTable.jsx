@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { API_BASE_URL } from "@/data/constants";
 import { useTableState } from "@/components/FishList/useTableState";
 import useFishData from "@/services/useFishData";

@@ -1,6 +1,7 @@
 import FishStatsTable from "@/components/FishStatsTable";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import FishStatsChart from "@/components/FishStatsChart";
+import config from "../../notification-config.json";
 
 const StatsPage = () => {
 	return (
@@ -33,6 +34,29 @@ const StatsPage = () => {
 						<FishStatsChart />
 					</TabsContent>
 				</Tabs>
+
+				<div className="mt-10 pt-6 border-t">
+					<h2 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-3">
+						Telegram-notifieringar
+					</h2>
+					<div className="rounded-lg border bg-card p-4 text-sm space-y-1 max-w-xs">
+						<p>
+							<span className="text-muted-foreground">Första fisken i år:</span>{" "}
+							{config.notifyFirstFish ? "Ja" : "Nej"}
+						</p>
+						<p>
+							<span className="text-muted-foreground">Minimilängd:</span>{" "}
+							{config.minLength != null ? `${config.minLength} cm` : "–"}
+						</p>
+						<p>
+							<span className="text-muted-foreground">Minimivikt:</span>{" "}
+							{config.minWeight != null ? `${config.minWeight} g` : "–"}
+						</p>
+						<p className="text-xs text-muted-foreground pt-2">
+							Ändra tröskelvärden i <code>notification-config.json</code>
+						</p>
+					</div>
+				</div>
 			</div>
 		</div>
 	);

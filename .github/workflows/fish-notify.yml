@@ -1,0 +1,43 @@
+# Setup:
+# 1. Go to Telegram, message @BotFather → /newbot → copy the token
+# 2. Create a Telegram group and add your bot as a member
+# 3. Send any message in the group, then open:
+#    https://api.telegram.org/bot<YOUR_TOKEN>/getUpdates
+#    Find "chat":{"id":...} — that negative number is your chat ID
+# 4. In this repo: Settings → Secrets → Actions → add:
+#    TELEGRAM_BOT_TOKEN  (the token from step 1)
+#    TELEGRAM_CHAT_ID    (the chat ID from step 3)
+
+name: Fish Notification
+
+on:
+  schedule:
+    - cron: '0 * * * *'  # every hour
+  workflow_dispatch:       # allows manual trigger from GitHub Actions tab
+
+permissions:
+  contents: write
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Check for new fish and notify
+        run: node scripts/check-fish.mjs
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+
+      - name: Commit updated state
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add notification-state.json
+          git diff --staged --quiet || git commit -m "chore: update fish notification state [skip ci]"
+          git push
