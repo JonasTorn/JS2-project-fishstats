@@ -5,30 +5,36 @@ import FishStatsChart from "@/components/FishStatsChart";
 
 const StatsPage = () => {
 	return (
-		<div className="max-w-5xl mx-auto px-4 py-8">
-			<h1 className="text-3xl font-bold mb-6">Fisktrappan</h1>
-			<Tabs defaultValue="list" className="flex flex-col">
-				<TabsList className="bg-transparent text-primary w-fit self-center">
-					<TabsTrigger
-						value="list"
-						className="bg-muted data-[state=active]:bg-secondary data-[state=active]:text-background border border-r-0 rounded-r-none w-24"
-					>
-						Lista
-					</TabsTrigger>
-					<TabsTrigger
-						value="statistics"
-						className="bg-muted data-[state=active]:bg-secondary data-[state=active]:text-background border border-l-0 rounded-l-none w-32"
-					>
-						Statistik
-					</TabsTrigger>
-				</TabsList>
-				<TabsContent value="list">
-					<FishStatsTable />
-				</TabsContent>
-				<TabsContent value="statistics" className="w-full md:px-[5vw]">
-					<FishStatsChart />
-				</TabsContent>
-			</Tabs>
+		<div className="min-h-screen">
+			<div className="max-w-5xl mx-auto px-6 py-10">
+				<div className="mb-8 pb-6 border-b">
+					<h1 className="text-2xl font-semibold tracking-tight">Fisktrappan</h1>
+					<p className="text-sm text-muted-foreground mt-1">Dammåns fiskräkning sedan 2002</p>
+				</div>
+
+				<Tabs defaultValue="list" className="flex flex-col">
+					<TabsList className="h-9 rounded-none border-b border-border bg-transparent p-0 w-full justify-start mb-6">
+						<TabsTrigger
+							value="list"
+							className="rounded-none border-b-2 border-transparent data-[state=active]:border-primary data-[state=active]:bg-transparent data-[state=active]:shadow-none px-4 pb-3 pt-2 font-medium text-muted-foreground data-[state=active]:text-foreground"
+						>
+							Lista
+						</TabsTrigger>
+						<TabsTrigger
+							value="statistics"
+							className="rounded-none border-b-2 border-transparent data-[state=active]:border-primary data-[state=active]:bg-transparent data-[state=active]:shadow-none px-4 pb-3 pt-2 font-medium text-muted-foreground data-[state=active]:text-foreground"
+						>
+							Statistik
+						</TabsTrigger>
+					</TabsList>
+					<TabsContent value="list">
+						<FishStatsTable />
+					</TabsContent>
+					<TabsContent value="statistics">
+						<FishStatsChart />
+					</TabsContent>
+				</Tabs>
+			</div>
 		</div>
 	);
 };

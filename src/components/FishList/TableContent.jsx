@@ -5,17 +5,17 @@ import { flexRender } from "@tanstack/react-table";
 const TableContent = ({ table, columns }) => {
 	return (
 		<Table>
-			<TableHeader >
+			<TableHeader>
 				{table.getHeaderGroups().map((headerGroup) => (
-					<TableRow key={headerGroup.id} >
+					<TableRow key={headerGroup.id} className="hover:bg-transparent border-b bg-muted/40">
 						{headerGroup.headers.map((header) => (
-							<TableHead key={header.id} >
+							<TableHead
+								key={header.id}
+								className="text-xs font-semibold uppercase tracking-wider text-muted-foreground"
+							>
 								{header.isPlaceholder
 									? null
-									: flexRender(
-											header.column.columnDef.header,
-											header.getContext()
-									  )}
+									: flexRender(header.column.columnDef.header, header.getContext())}
 							</TableHead>
 						))}
 					</TableRow>
@@ -26,7 +26,7 @@ const TableContent = ({ table, columns }) => {
 					table.getRowModel().rows.map((row) => (
 						<TableRow
 							key={row.id}
-							data-state={row.getIsSelected() && "selected"}
+							className="hover:bg-muted/50 transition-colors"
 						>
 							{row.getVisibleCells().map((cell) => (
 								<TableCell key={cell.id} className="text-center">
@@ -37,8 +37,8 @@ const TableContent = ({ table, columns }) => {
 					))
 				) : (
 					<TableRow>
-						<TableCell colSpan={columns.length} className="h-24 text-center">
-							No results.
+						<TableCell colSpan={columns.length} className="h-24 text-center text-muted-foreground">
+							Inga resultat.
 						</TableCell>
 					</TableRow>
 				)}

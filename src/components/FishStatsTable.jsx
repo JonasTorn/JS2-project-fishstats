@@ -9,7 +9,6 @@ import YearSelector from "./FishList/YearSelector";
 import ColumnVisibilityMenu from "./FishList/ColumnVisibilityMenu";
 import PaginationControls from "./FishList/PaginationControls";
 import TableContent from "./FishList/TableContent";
-import { Card, CardContent, CardFooter, CardTitle } from "@/components/ui/card";
 
 const FishStatsTable = () => {
 	const currentYear = new Date().getFullYear();
@@ -29,22 +28,20 @@ const FishStatsTable = () => {
 	if (error) return <ErrorCard error={error} />;
 
 	return (
-		<Card className="mx-[4vw] md:px-8 border-none shadow-none">
-			<CardTitle className="flex items-center py-8">
+		<div className="space-y-4">
+			<div className="flex items-center gap-3">
 				<YearSelector year={year} yearSpan={yearSpan} setYear={setYear} />
 				<ColumnVisibilityMenu table={table} />
-			</CardTitle>
-			<CardContent className="rounded-md border px-0">
+			</div>
+			<div className="rounded-lg border bg-card shadow-sm overflow-hidden">
 				<TableContent table={table} columns={tableColumns} />
-			</CardContent>
-			<CardFooter>
-				<PaginationControls
-					table={table}
-					pagination={pagination}
-					setPagination={setPagination}
-				/>
-			</CardFooter>
-		</Card>
+			</div>
+			<PaginationControls
+				table={table}
+				pagination={pagination}
+				setPagination={setPagination}
+			/>
+		</div>
 	);
 };
 
